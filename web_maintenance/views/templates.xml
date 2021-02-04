@@ -108,6 +108,27 @@
             </xpath>
         </template>
 
+        <template id="ticket_create_done">
+            <t t-call="website.layout">
+                <div class="container">
+                    <div class="mt16 mb16">
+                        <h1>
+                            Thanks your request is created with title:
+                            <p>
+                                <t t-esc="title"/>
+                            </p>
+                        </h1>
+                    </div>
+                    <div class="clearfix oe_login_buttons">
+                        <a t-attf-href="/web_maintenance/ticket_create_form/" class="btn btn-primary pull-left">Create
+                            another Maintenance Request
+                        </a>
+                    </div>
+                </div>
+            </t>
+
+        </template>
+
 
     </data>
 </odoo>
