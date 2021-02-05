@@ -23,10 +23,11 @@ class Academy(http.Controller):
                                                                                                   values['user_name'],
                                                                                                   values['phone'],
                                                                                                   values['email'])})
+            return http.request.render('web_maintenance.ticket_create_done',
+                                       {'title': str(new_user.name)})
         except:
             print("Please refresh the page")
-        return http.request.render('web_maintenance.ticket_create_done',
-                                   {'title': str(new_user.name)})
+
 
     @http.route('/web_maintenance/ticket_create_form/', auth='public', website=True, type="http")
     def index(self, **kw):
