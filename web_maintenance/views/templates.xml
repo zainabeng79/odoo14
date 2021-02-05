@@ -113,7 +113,7 @@
                 <div class="container">
                     <div class="mt16 mb16">
                         <p>
-                            Thanks your request is created with title:<t t-esc="title"/>
+                            Thanks your request is created with title : <t t-esc="title"/>
                         </p>
                     </div>
                     <div class="clearfix oe_login_buttons">

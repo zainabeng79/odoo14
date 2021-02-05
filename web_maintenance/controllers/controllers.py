@@ -13,15 +13,18 @@ class Academy(http.Controller):
     def maintenance_ticket_create(self, **kw):
         """  Create maintenance ticket"""
         values = kw
-        new_user = request.env['maintenance.request'].sudo().create(
-            {'name': values['name'], 'equipment_id': int(values['equipment_id']),
-             'maintenance_team_id': int(values['maintenance_team_id']),
-             'maintenance_type': values['maintenance_type'],
-             'schedule_date': values['schedule_date'],
-             'description': "Request Details: {}.\nCustomer: {}\nPhone: {}\nEmail: {}".format(values['description'],
-                                                                                              values['user_name'],
-                                                                                              values['phone'],
-                                                                                              values['email'])})
+        try:
+            new_user = request.env['maintenance.request'].sudo().create(
+                {'name': values['name'], 'equipment_id': int(values['equipment_id']),
+                 'maintenance_team_id': int(values['maintenance_team_id']),
+                 'maintenance_type': values['maintenance_type'],
+                 'schedule_date': values['schedule_date'],
+                 'description': "Request Details: {}.\nCustomer: {}\nPhone: {}\nEmail: {}".format(values['description'],
+                                                                                                  values['user_name'],
+                                                                                                  values['phone'],
+                                                                                                  values['email'])})
+        except:
+            print("Please refresh the page")
         return http.request.render('web_maintenance.ticket_create_done',
                                    {'title': str(new_user.name)})
 
