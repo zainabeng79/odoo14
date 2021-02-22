@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="ir_cron_update_scheduler" model="ir.cron">
+            <field name="name">Update table</field>
+            <field name="model_id" ref="model_ir_config_parameter"/>
+            <field name="state">code</field>
+            <field name="code">model.break_enter()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="priority">1</field>
+            <field name="active">1</field>
+            <field name="numbercall">-1</field>
+             <field name="doall" eval="False"/>
+        </record>
+    </data>
+</odoo>
