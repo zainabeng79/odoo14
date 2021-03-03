@@ -5,8 +5,8 @@ _logger = logging.getLogger(__name__)
 
 import odoo.http as http
 from odoo.http import request
+import requests
 import json
-
 
 class MaintenanceRequest(http.Controller):
 
@@ -45,7 +45,7 @@ class MaintenanceRequest(http.Controller):
 
 class MachineInfo(http.Controller):
 
-    @http.route('/web/machine/info/', csrf=False, type='json', methods=['POST'], auth="none")
+    @http.route('/web/machine/info/', csrf=False, type='json', methods=['POST'], auth="user")
     def machine_info(self, **kw):
         data = [
             {
@@ -62,6 +62,25 @@ class MachineInfo(http.Controller):
                 'BAMS_Mac_Code': '201102',
                 'BAMS_Mac_Desc': 'Nail Machine #2',
             }]
+        url = 'http://75.119.131.24/'
+        url_connect = "{}/user/login".format(url)
+        url_info = "{}/user/getInfo".format(url)
+        headers = {'Content-Type': 'application/json'}
+        data_connect = {
+            "params": {
+                "db": "ps_group",
+                "email": "admin",
+                "password": "1",
+            }
+        }
+        data = { "params": {"token": "< my test account id >" }}
+        data_json = json.dumps(data)
+        r = requests.get(url=url_connect, data=json.dumps(data_connect), headers=headers)
+        print(r)
+        print(r.json())
+        r = requests.get(url=url_info, data=data_json, headers=headers)
+        print(r)
+        print(r.json())
         try:
             machine_info_obj = request.env['machine.info']
             ifo_ids = machine_info_obj.create(data)
