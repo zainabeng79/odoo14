@@ -43,7 +43,7 @@ class MaintenanceRequest(http.Controller):
     def list(self, **kw):
         return http.request.render('web_maintenance.listing', {})
 
-    @http.route('/machine/info/', csrf=False, type='json', methods=['GET', 'POST'], auth="user", website=True)
+    @http.route('/machine/info/', csrf=False, type='http', methods=['GET', 'POST'], auth="user", website=True)
     def machine_info(self, **kw):
         data = [
             {
