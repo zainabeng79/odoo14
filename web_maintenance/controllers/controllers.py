@@ -5,9 +5,10 @@ _logger = logging.getLogger(__name__)
 
 import odoo.http as http
 from odoo.http import request
+import json
 
 
-class Academy(http.Controller):
+class MaintenanceRequest(http.Controller):
 
     @http.route('/maintenance/ticket/create/', type="http", auth="public", website=True)
     def maintenance_ticket_create(self, **kw):
@@ -28,7 +29,6 @@ class Academy(http.Controller):
         except:
             print("Please refresh the page")
 
-
     @http.route('/web_maintenance/ticket_create_form/', auth='public', website=True, type="http")
     def index(self, **kw):
         equipment_ids = request.env['maintenance.equipment'].sudo().search([])
@@ -41,3 +41,31 @@ class Academy(http.Controller):
                 sitemap=True)
     def list(self, **kw):
         return http.request.render('web_maintenance.listing', {})
+
+
+class MachineInfo(http.Controller):
+
+    @http.route('/web/machine/info/', csrf=False, type='json', methods=['POST'], auth="none")
+    def machine_info(self, **kw):
+        data = [
+            {
+                'Machine_Code': '232100',
+                'Machine_Name': 'NAIL # 1 Wafios N-41',
+                'Machine_ShortName': 'NL-01',
+                'BAMS_Mac_Code': '201101',
+                'BAMS_Mac_Desc': 'Nail Machine #1',
+            },
+            {
+                'Machine_Code': '232101',
+                'Machine_Name': 'NAIL # 1 Wafios N-41',
+                'Machine_ShortName': 'NL-02',
+                'BAMS_Mac_Code': '201102',
+                'BAMS_Mac_Desc': 'Nail Machine #2',
+            }]
+        try:
+            machine_info_obj = request.env['machine.info']
+            ifo_ids = machine_info_obj.create(data)
+        except Exception as e:
+            return 'error'
+
+        return json.dumps({"success": ifo_ids.ids})
