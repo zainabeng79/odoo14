@@ -43,7 +43,7 @@ class MaintenanceRequest(http.Controller):
     def list(self, **kw):
         return http.request.render('web_maintenance.listing', {})
 
-    @http.route('/machine/info/', csrf=False, type='http', methods=['GET', 'POST'], auth="user", website=True)
+    @http.route('/machine/info/', csrf=False, type='http', methods=['GET', 'POST'], auth="user")
     def machine_info(self, **kw):
         data = [
             {
@@ -76,9 +76,9 @@ class MaintenanceRequest(http.Controller):
         r = requests.get(url=url_connect, data=json.dumps(data_connect), headers=headers)
         print("-------------------------->", r)
         print("--------------------------2>", r.json())
-        # r = requests.get(url=url_info, data=data_json, headers=headers)
-        # print(r)
-        # print(r.json())
+        r = requests.get(url=url_info, data=data_json, headers=headers)
+        print(r)
+        print(r.json())
         try:
             machine_info_obj = request.env['machine.info']
             ifo_ids = machine_info_obj.sudo().create(data)
