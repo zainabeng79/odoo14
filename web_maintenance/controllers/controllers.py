@@ -8,6 +8,7 @@ from odoo.http import request
 import requests
 import json
 
+
 class MaintenanceRequest(http.Controller):
 
     @http.route('/maintenance/ticket/create/', type="http", auth="public", website=True)
@@ -45,7 +46,7 @@ class MaintenanceRequest(http.Controller):
 
 class MachineInfo(http.Controller):
 
-    @http.route('/machine/info/', csrf=False, type='json', methods=['POST'], auth="user", website=True)
+    @http.route('/machine/info/', csrf=False, type='http', methods=['POST'], auth="public")
     def machine_info(self, **kw):
         data = [
             {
@@ -73,7 +74,7 @@ class MachineInfo(http.Controller):
                 "password": "admin",
             }
         }
-        data = { "params": {"token": "< my test account id >" }}
+        data = {"params": {"token": "< my test account id >"}}
         data_json = json.dumps(data)
         r = requests.get(url=url_connect, data=json.dumps(data_connect), headers=headers)
         print(r)
