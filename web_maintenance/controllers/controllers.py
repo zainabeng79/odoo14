@@ -71,14 +71,13 @@ class MaintenanceRequest(http.Controller):
                 "password": "admin",
             }
         }
-        # data = {"params": {"token": "< my test account id >"}}
         data_json = json.dumps(data)
         r = requests.get(url=url_connect, data=json.dumps(data_connect), headers=headers)
         print("-------------------------->", r)
         print("--------------------------2>", r.json())
-        r = requests.get(url=url_info, data=data_json, headers=headers)
-        print(r)
-        print(r.json())
+        # r = requests.get(url=url_info, data=data_json, headers=headers)
+        # print(r)
+        # print(r.json())
         try:
             machine_info_obj = request.env['machine.info']
             ifo_ids = machine_info_obj.sudo().create(data)
