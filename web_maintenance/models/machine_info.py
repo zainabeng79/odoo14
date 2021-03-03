@@ -4,7 +4,7 @@ from odoo import api, fields, models
 
 class MachineInfo(models.Model):
     _name = 'machine.info'
-    _rec_name = 'name'
+    _rec_name = 'Machine_Name'
     _description = 'Machine Info'
 
     Machine_Name = fields.Char(string="Machine Name", required=False)
