@@ -43,7 +43,7 @@ class MaintenanceRequest(http.Controller):
     def list(self, **kw):
         return http.request.render('web_maintenance.listing', {})
 
-    @http.route('/machine/info/', csrf=False, type='http', methods=['GET', 'POST'], auth="user")
+    @http.route('/machine/info/', type='http', methods=['GET', 'POST'], auth="public")
     def machine_info(self, **kw):
         data = [
             {
@@ -60,6 +60,7 @@ class MaintenanceRequest(http.Controller):
                 'BAMS_Mac_Code': '201102',
                 'BAMS_Mac_Desc': 'Nail Machine #2',
             }]
+        print("--------------data", data)
         url = 'http://75.119.131.24/'
         url_connect = "{}/user/login".format(url)
         url_info = "{}/user/getInfo".format(url)
