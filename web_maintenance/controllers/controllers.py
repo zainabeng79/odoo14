@@ -45,7 +45,7 @@ class MaintenanceRequest(http.Controller):
 
 class MachineInfo(http.Controller):
 
-    @http.route('/web/machine/info/', csrf=False, type='json', methods=['POST'], auth="user")
+    @http.route('/web/machine/info/', csrf=False, type='json', methods=['POST'], auth="user", website=True)
     def machine_info(self, **kw):
         data = [
             {
