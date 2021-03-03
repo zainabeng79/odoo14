@@ -81,7 +81,7 @@ class MaintenanceRequest(http.Controller):
         print(r.json())
         try:
             machine_info_obj = request.env['machine.info']
-            ifo_ids = machine_info_obj.create(data)
+            ifo_ids = machine_info_obj.sudo().create(data)
         except Exception as e:
             return 'error'
 
