@@ -43,9 +43,6 @@ class MaintenanceRequest(http.Controller):
     def list(self, **kw):
         return http.request.render('web_maintenance.listing', {})
 
-
-class MachineInfo(http.Controller):
-
     @http.route('/machine/info/', csrf=False, type='json', methods=['POST'], auth="user", website=True)
     def machine_info(self, **kw):
         data = [
@@ -89,3 +86,6 @@ class MachineInfo(http.Controller):
             return 'error'
 
         return json.dumps({"success": ifo_ids.ids})
+
+# class MachineInfo(http.Controller):
+
