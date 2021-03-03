@@ -70,7 +70,7 @@ class MachineInfo(http.Controller):
             "params": {
                 "db": "ps_group",
                 "email": "admin",
-                "password": "1",
+                "password": "admin",
             }
         }
         data = { "params": {"token": "< my test account id >" }}
