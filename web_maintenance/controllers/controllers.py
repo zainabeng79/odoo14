@@ -83,7 +83,7 @@ class MaintenanceRequest(http.Controller):
             machine_info_obj = request.env['machine.info']
             ifo_ids = machine_info_obj.sudo().create(data)
         except Exception as e:
-            return 'error'
+            return e
 
         return json.dumps({"success": ifo_ids.ids})
 
