@@ -43,48 +43,20 @@ class MaintenanceRequest(http.Controller):
     def list(self, **kw):
         return http.request.render('web_maintenance.listing', {})
 
-    @http.route('/machine/info/', type='json', methods=['GET', 'POST'], auth="user")
+
+class MachineInfo(http.Controller):
+    @http.route('/machine/info/', type='json', methods=['POST'], auth="user")
     def machine_info(self, **kw):
-        data = [
-            {
-                'Machine_Code': '232100',
-                'Machine_Name': 'NAIL # 1 Wafios N-41',
-                'Machine_ShortName': 'NL-01',
-                'BAMS_Mac_Code': '201101',
-                'BAMS_Mac_Desc': 'Nail Machine #1',
-            },
-            {
-                'Machine_Code': '232101',
-                'Machine_Name': 'NAIL # 1 Wafios N-41',
-                'Machine_ShortName': 'NL-02',
-                'BAMS_Mac_Code': '201102',
-                'BAMS_Mac_Desc': 'Nail Machine #2',
-            }]
-        print("--------------data", data)
-        url = 'http://75.119.131.24/'
-        url_connect = "{}user/login".format(url)
-        url_info = "{}user/getInfo".format(url)
-        headers = {'Content-Type': 'application/json'}
-        data_connect = {
-            "params": {
-                "db": "ps_group",
-                "email": "admin",
-                "password": "admin",
-            }
-        }
-        data_json = json.dumps(data)
-        r = requests.get(url=url_connect, data=json.dumps(data_connect), headers=headers)
-        print("-------------------------->", r)
-        print("--------------------------2>", r.json())
-        # r = requests.get(url=url_info, data=data_json, headers=headers)
-        # print(r)
-        # print(r.json())
+        try:
+            data = request.jsonrequest.get('data')
+        except Exception as e:
+            return e
         try:
             machine_info_obj = request.env['machine.info']
             ifo_ids = machine_info_obj.sudo().create(data)
         except Exception as e:
             return e
-
-        return json.dumps({"success": ifo_ids.ids})
-
-# class MachineInfo(http.Controller):
+        try:
+            return json.dumps({"success": ifo_ids.ids})
+        except Exception as e:
+            return e
