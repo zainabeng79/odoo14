@@ -43,7 +43,7 @@ class MaintenanceRequest(http.Controller):
     def list(self, **kw):
         return http.request.render('web_maintenance.listing', {})
 
-    @http.route('/machine/info/', type='http', methods=['GET', 'POST'], auth="public")
+    @http.route('/machine/info/', type='json', methods=['GET', 'POST'], auth="user")
     def machine_info(self, **kw):
         data = [
             {
@@ -62,8 +62,8 @@ class MaintenanceRequest(http.Controller):
             }]
         print("--------------data", data)
         url = 'http://75.119.131.24/'
-        url_connect = "{}/user/login".format(url)
-        url_info = "{}/user/getInfo".format(url)
+        url_connect = "{}user/login".format(url)
+        url_info = "{}user/getInfo".format(url)
         headers = {'Content-Type': 'application/json'}
         data_connect = {
             "params": {
