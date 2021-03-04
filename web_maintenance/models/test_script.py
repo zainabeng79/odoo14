@@ -10,17 +10,11 @@ import json
 #     }
 # }
 
-# target server authenticate url
-
-url_connect = "http://75.119.131.24/web/session/authenticate"
-
-# url to create data coming form skada
-
-url = "http://75.119.131.24/machine/info/"
-
 headers = {'Content-Type': 'application/json'}
-# data to connect with database
 
+# target server authenticate url
+url_connect = "http://75.119.131.24/web/session/authenticate"
+# data to connect with database
 data_connect = {
     "params": {
         "db": "ps_group",
@@ -28,9 +22,18 @@ data_connect = {
         "password": "admin",
     }
 }
+# create new session
+session = requests.Session()
+connect_session = session.post(url=url_connect, data=json.dumps(data_connect), headers=headers)
+if connect_session.ok:
+    result = connect_session.json()['result']
+    if result.get('session_id'):
+        session.cookies['session_id'] = result.get('session_id')
+# ----------------------------
 
+# url to create data coming form skada
+url = "http://75.119.131.24/machine/info/"
 # please send data like this format
-
 data = [
     {
         'Machine_Code': '232100',
@@ -46,20 +49,8 @@ data = [
         'BAMS_Mac_Code': '201102',
         'BAMS_Mac_Desc': 'Nail Machine #2',
     }]
-# create new session
-session = requests.Session()
-connect_session = session.post(url=url_connect, data=json.dumps(data_connect), headers=headers)
-if connect_session.ok:
-    result = connect_session.json()['result']
-    if result.get('session_id'):
-        session.cookies['session_id'] = result.get('session_id')
-
-# ----------------------------
-
 # post data from skada to odoo to create it
-
 response = session.post(url=url, data=json.dumps({'data': data}), headers=headers)
-print(response)
 
 # response.json()  = {'jsonrpc': '2.0', 'id': None, 'result': '{"success": [29, 30]}'}
 print(response.json())
