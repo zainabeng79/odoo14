@@ -57,6 +57,6 @@ class MachineInfo(http.Controller):
         except Exception as e:
             return e
         try:
-            return json.dumps({"success": [str(r) for r in ifo_ids]})
+            return json.dumps({"success": "Records created with ids {}".format(ifo_ids.ids)})
         except Exception as e:
             return e
