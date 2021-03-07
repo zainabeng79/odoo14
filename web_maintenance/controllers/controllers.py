@@ -57,6 +57,6 @@ class MachineInfo(http.Controller):
         except Exception as e:
             return e
         try:
-            return json.dumps({"success": ifo_ids})
+            return json.dumps({"success": "hghghghg"})
         except Exception as e:
             return e

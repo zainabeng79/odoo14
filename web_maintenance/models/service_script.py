@@ -1,5 +1,7 @@
-import requests
 import json
+
+import requests
+
 # url_connect = "http://localhost:8014/web/session/authenticate"
 # url = "http://localhost:8014/machine/info/"
 # data_connect = {
@@ -35,28 +37,28 @@ if connect_session.ok:
 url = "http://75.119.131.24/machine/info/"
 # please send data like this format
 data = [
-    (0,0,{
+    (0, 0, {
         'Machine_Code': '232100',
         'Machine_Name': 'NAIL # 1 Wafios N-41',
         'Machine_ShortName': 'NL-01',
         'BAMS_Mac_Code': '201101',
         'BAMS_Mac_Desc': 'Nail Machine #1',
     }),
-    (0,0,{
+    (0, 0, {
         'Machine_Code': '232101',
         'Machine_Name': 'NAIL # 1 Wafios N-41',
         'Machine_ShortName': 'NL-02',
         'BAMS_Mac_Code': '201102',
         'BAMS_Mac_Desc': 'Nail Machine #2',
     }),
-    (0,0,{
+    (0, 0, {
         'Machine_Code': '232102',
         'Machine_Name': 'NAIL # 1 Wafios N-42',
         'Machine_ShortName': 'NL-03',
         'BAMS_Mac_Code': '201103',
         'BAMS_Mac_Desc': 'Nail Machine #4',
     }),
-    (0,0,{
+    (0, 0, {
         'Machine_Code': '232103',
         'Machine_Name': 'NAIL # 1 Wafios N-42',
         'Machine_ShortName': 'NL-03',
