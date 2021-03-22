@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrpworkcenter_form_inherit" model="ir.ui.view">
+        <field name="name">mrp.workcenter.inherit</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Operational Cost" name="Operational Cost">
+                    <group>
+                        <field name="op_cost"/>
+                        <field name="analytic_opcost_id"/>
+                    </group>
+                </page>
+                <page string="Labour Cost" name="Labour Cost">
+                    <group>
+                        <field name="lab_cost"/>
+                        <field name="analytic_labcost_id"/>
+
+                    </group>
+                </page>
+                <page string="Deprecation Cost" name="Deprecation Cost">
+                    <group>
+                        <field name="dep_cost"/>
+                        <field name="analytic_depcost_id"/>
+
+
+                    </group>
+                </page>
+                <page string="Productions Cost" name="Productions Cost">
+                    <group>
+                        <field name="pro_cost"/>
+                        <field name="analytic_procost_id"/>
+
+                    </group>
+                </page>
+                <page string="Other Cost" name="Other Cost">
+                    <group>
+                        <field name="other_cost"/>
+                        <field name="analytic_othercost_id"/>
+
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
