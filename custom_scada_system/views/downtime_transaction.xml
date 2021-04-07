@@ -1,0 +1,52 @@
+<odoo>
+     <record id="downtime_transactional_form" model="ir.ui.view">
+             <field name="name">downtime.transactional.form</field>
+             <field name="model">downtime.transaction</field>
+             <field name="arch" type="xml">
+                 <form string="Downtime Transaction">
+                     <sheet>
+                         <group>
+                         <group>
+                             <field name="start_time" widget="float_time"/>
+                             <field name="end_time" widget="float_time"/>
+                             <field name="down_code"/>
+                             <field name="tran_date" />
+                             <field name="shift"/>
+                             <field name="machine_name"/>
+                         </group>
+                         <group>
+                             <field name="status"/>
+                             <field name="tran_date_active"/>
+                             <field name="down_time_desc"/>
+                         </group>
+                         </group>
+                     </sheet>
+                 </form>
+             </field>
+         </record>
+       <record id="downtime_transaction_tree" model="ir.ui.view">
+             <field name="name">downtime.transaction.tree</field>
+             <field name="model">downtime.transaction</field>
+             <field name="arch" type="xml">
+                 <tree >
+                          <field name="status"/>
+                             <field name="tran_date_active"/>
+                             <field name="down_time_desc"/>
+                             <field name="start_time" />
+                             <field name="end_time"/>
+                             <field name="down_code"/>
+                             <field name="tran_date" />
+                             <field name="shift"/>
+                             <field name="machine_name"/>
+                 </tree>
+             </field>
+       </record>
+
+        <record id="action_downtime_transaction_menu" model="ir.actions.act_window">
+            <field name="name"> Downtime Transaction </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">downtime.transaction</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+<menuitem name="Downtime transaction" id="downtime_menu" parent="scada_conf" action="action_downtime_transaction_menu"/>
+</odoo>

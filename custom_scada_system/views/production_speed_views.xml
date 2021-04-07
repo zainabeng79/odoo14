@@ -1,0 +1,75 @@
+<odoo>
+  <data>
+     <record id="production_speed_form" model="ir.ui.view">
+             <field name="name">production.speed.form</field>
+             <field name="model">production.speed</field>
+             <field name="arch" type="xml">
+                 <form string="Production Speed">
+                     <sheet>
+                         <group>
+                         <group>
+                             <field name="machine_code"/>
+                             <field name="speed"/>
+                             <field name="tran_date"/>
+                             <field name="tran_time" widget="float_time"/>
+                             <field name="nail_dai"/>
+
+                         </group>
+                         <group>
+                             <field name="nail_length"/>
+                             <field name="nail_produced"/>
+                             <field name="in_item"/>
+                             <field name="nail_hour"/>
+                             <field name="nail_min"/>
+                         </group>
+                             <group>
+                             <field name="out_item"/>
+                             <field name="in_weight"/>
+                             <field name="tag"/>
+                             <field name="operator"/>
+                             <field name="status"/>
+                         </group>
+                         </group>
+                     </sheet>
+                 </form>
+             </field>
+         </record>
+
+
+         <record id="product_speed_tree" model="ir.ui.view">
+             <field name="name">prducte.speed.tree</field>
+             <field name="model">production.speed</field>
+             <field name="arch" type="xml">
+                 <tree >
+                             <field name="machine_code"/>
+                             <field name="speed"/>
+                             <field name="tran_date"/>
+                             <field name="tran_time"/>
+                             <field name="nail_dai"/>
+                             <field name="nail_length"/>
+                             <field name="nail_produced"/>
+                             <field name="in_item"/>
+                             <field name="nail_hour"/>
+                             <field name="nail_min"/>
+                             <field name="out_item"/>
+                             <field name="in_weight"/>
+                             <field name="tag"/>
+                             <field name="operator"/>
+                             <field name="status"/>
+
+                 </tree>
+             </field>
+         </record>
+         <record id="action_product_speed_menu" model="ir.actions.act_window">
+            <field name="name"> Product Speed </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">production.speed</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+          <menuitem name="Production Speed" parent="scada_conf"
+                    id="production_speed_menu"
+                    action="action_product_speed_menu"
+                    />
+  </data>
+</odoo>

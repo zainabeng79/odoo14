@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_live_data,access_live_sdata,model_scada_livedata,base.group_user,1,1,1,1
+access_scada_table_scada_tables,scada_tables.scada_tables,model_machine_start_stop,base.group_user,1,1,1,1
+access_scada_tables_scada_tables,scada_table.scada_tables,model_production_speed,base.group_user,1,1,1,1
+access_scada_tabl_scada_tables,scada_tab.scada_tables,model_downtime_transaction,base.group_user,1,1,1,1
+access_machine_capacity,machine_capacity,model_machine_capacity,base.group_user,1,1,1,1

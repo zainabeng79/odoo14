@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="m_start_stop_form_view">
+            <field name="name">machine.start.stop.form</field>
+            <field name="model">machine.start.stop</field>
+            <field name="arch" type="xml">
+                <form string="Machine Start Stop Form">
+                    <sheet>
+                        <group>
+                            <field name="MCN_CODE"/>
+                            <field name="T_Date"/>
+                            <field name="MST_Time"/>
+                            <field name="MET_Time"/>
+                            <field name="Status"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mach_action">
+        <field name="name">Machine Start Stop</field>
+        <field name="res_model">machine.start.stop</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the first record</p>
+        </field>
+    </record>
+        <menuitem id="mach_menu" name="Machine Start/Stop" parent="scada_conf" action="mach_action"/>
+</odoo>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="livedata_form" model="ir.ui.view">
+        <field name="name">scada.livedata.form</field>
+        <field name="model">scada.livedata</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="shift"/>
+                            <field name="operator_Id"/>
+                            <field name="machine_code"/>
+                            <field name="status"/>
+                            <field name="input_code"/>
+                        </group>
+                        <group>
+                            <field name="nail_dia"/>
+                            <field name="nail_length"/>
+                            <field name="nail_speed"/>
+                            <field name="nail_produced"/>
+                            <field name="t_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string="Machine data">
+                                <group>
+                                    <group>
+                                        <field name="hours"/>
+                                        <field name="minute"/>
+                                        <field name="input_coiltag"/>
+                                        <field name="nail_produced"/>
+                                        <field name="output_code"/>
+                                    </group>
+                                    <group>
+                                        <field name="inupt_coil_weight"/>
+                                        <field name="machine_code"/>
+                                        <field name="shift_ope_code"/>
+                                        <field name="crane_ope_code"/>
+                                        <field name="forklift_ope_code"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <!--                       page 2     -->
+                            <page string="Machine info">
+                                <group>
+                                    <group>
+                                        <field name="mach_ope_code"/>
+                                        <field name="ope_code1"/>
+                                        <field name="ope_code2"/>
+                                        <field name="starttime"/>
+                                        <field name="endtime"/>
+                                    </group>
+                                    <group>
+                                        <field name="input_dia"/>
+                                        <field name="input_length"/>
+                                        <field name="output_dia"/>
+                                        <field name="output_length"/>
+                                        <field name="scrap"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <!--                            page 3-->
+                            <page string="other info">
+                                <group>
+                                    <group>
+                                        <field name="t_time"/>
+                                        <field name="coil_status"/>
+                                        <field name="tab_date"/>
+                                        <field name="tab_actual_weight"/>
+                                        <field name="tab_scrap_weight"/>
+                                    </group>
+                                    <group>
+                                        <field name="tab_mac_id"/>
+                                        <field name="tab_mcn_code"/>
+                                        <field name="tab_user_id"/>
+                                        <field name="tab_scrap_type"/>
+                                        <field name="tab_in_barcode"/>
+                                        <field name="tab_out_barcode"/>
+                                        <field name="tab_scrap_powder_kg"/>
+                                        <field name="tab_scrap_coil_kg"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view-->
+    <record id="scadalivedata_tree" model="ir.ui.view">
+        <field name="name">scada.livedata.tree</field>
+        <field name="model">scada.livedata</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="shift"/>
+                <field name="operator_Id"/>
+                <field name="machine_code"/>
+                <field name="status"/>
+                <field name="input_code"/>
+                <field name="nail_dia"/>
+                <field name="nail_length"/>
+                <field name="nail_speed"/>
+                <field name="nail_produced"/>
+                <field name="t_date"/>
+                <field name="hours"/>
+                <field name="minute"/>
+                <field name="input_coiltag"/>
+                <field name="nail_produced"/>
+                <field name="output_code"/>
+                <field name="inupt_coil_weight"/>
+                <field name="machine_code"/>
+                <field name="shift_ope_code"/>
+                <field name="crane_ope_code"/>
+                <field name="forklift_ope_code"/>
+                <field name="mach_ope_code"/>
+                <field name="ope_code1"/>
+                <field name="ope_code2"/>
+                <field name="starttime"/>
+                <field name="endtime"/>
+                <field name="input_dia"/>
+                <field name="input_length"/>
+                <field name="output_dia"/>
+                <field name="output_length"/>
+                <field name="scrap"/>
+                <field name="t_time"/>
+                <field name="coil_status"/>
+                <field name="tab_date"/>
+                <field name="tab_actual_weight"/>
+                <field name="tab_scrap_weight"/>
+                <field name="tab_mac_id"/>
+                <field name="tab_mcn_code"/>
+                <field name="tab_user_id"/>
+                <field name="tab_scrap_type"/>
+                <field name="tab_in_barcode"/>
+                <field name="tab_out_barcode"/>
+                <field name="tab_scrap_powder_kg"/>
+                <field name="tab_scrap_coil_kg"/>
+            </tree>
+        </field>
+    </record>
+    <!--    create action  live data-->
+    <record id="livedata_action" model="ir.actions.act_window">
+        <field name="name">Live data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scada.livedata</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create your first live data!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="scada_root"
+              name="Scada"
+              sequence="3"/>
+    <menuitem id="scada_conf"
+              name="Configuration"
+               parent='scada_root'
+              sequence="5"/>
+
+    <menuitem id="scada_live_root"
+              name="Live Data"
+              parent="scada_conf"
+              action="livedata_action"
+              sequence="1"/>
+    <!--    end menu-->
+</odoo>
