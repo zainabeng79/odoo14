@@ -60,3 +60,21 @@ class MachineInfo(http.Controller):
             return json.dumps({"success": "Records created with ids {}".format(ifo_ids.ids)})
         except Exception as e:
             return e
+
+    # res partner controller
+    class PartnerInfo(http.Controller):
+        @http.route('/api/json_post_request', type='json', methods=['POST'], auth="user")
+        def partner_info(self, **kw):
+            try:
+                data = request.jsonrequest.get('data')
+            except Exception as e:
+                return e
+            try:
+                res_partner_obj = request.env['res.partner']
+                partner_ids = res_partner_obj.sudo().create(data)
+            except Exception as e:
+                return e
+            try:
+                return json.dumps({"Success": "Records partner created with ids {}".format(partner_ids.ids)})
+            except Exception as e:
+                return e
