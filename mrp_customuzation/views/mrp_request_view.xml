@@ -1,0 +1,32 @@
+<odoo>
+
+    <record model="ir.ui.view" id="mrpreq_extend_form">
+        <field name="name">mrpreq form</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <button name="archive_equipment_request" position="after">
+                <button string="Create Job Order" class="oe_highlight btn-primary o_sale_print"></button>
+                <button string="Create Matrial Requisition" class="oe_highlight btn-primary"></button>
+            </button>
+            <xpath expr="//div[hasclass('oe_title')]/label[hasclass('oe_edit_only')]" position="attributes">
+                <attribute name="string">Name</attribute>
+            </xpath>
+            <field name="equipment_id" position="before">
+                <field name="requester_id"/>
+            </field>
+            <field name="company_id" position="before">
+                <field name="des_loc"/>
+                <field name="matrial_req_emp"/>
+            </field>
+            <field name="description" position="after">
+                <notebook>
+                    <page string="Maintenance Plan Materials">
+                    </page>
+                    <page string="Maintenance Equipment Checklists">
+                    </page>
+                </notebook>
+            </field>
+        </field>
+    </record>
+</odoo>

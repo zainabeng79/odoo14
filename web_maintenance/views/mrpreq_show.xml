@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="show_mrpreq" name="show mrpreq">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class='container'>
+                    <!-- start-->
+                    <!--                    <div class="card w-100 bg-info">-->
+                    <div class="card-body">
+                        <center><h3 class='text-info' style="margin-top:10px">MRP Request Details </h3></center>
+                        <t t-foreach="mrpreq" t-as="mrpreqs">
+                            <div class="col-md-8 mt-4  offset-4">
+                                <div class="card profile-card-5 bg-dark">
+                                    <div class="card-body pl-30 pt-30 ">
+                                        <h5 class="card-title pt-50 ">
+                                            <strong>
+                                                <span>
+                                                    Request name:
+                                                </span> <t t-esc="mrpreqs.name"></t>
+                                            </strong>
+                                        </h5>
+                                        <p class="card-text">
+                                            <strong>
+                                                <span>
+                                                    Request Date:
+                                                </span>
+                                                    <t t-esc="mrpreqs.request_date"></t>
+                                            </strong>
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>
+                                                <span>
+                                                    Request Responsible:
+                                                </span>
+                                                    <t t-esc="mrpreqs.user_id.name"></t>
+                                            </strong>
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>
+                                                <span>
+                                                    Request Category:
+                                                </span>
+                                                    <t t-esc="mrpreqs.category_id.name"></t>
+                                            </strong>
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>
+                                                <span>
+                                                    Request Stage:
+                                                </span>
+                                                    <t t-esc="mrpreqs.stage_id.name"></t>
+                                            </strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <!--            </div>-->
+        </t>
+        <!--         end           -->
+    </template>
+</odoo>
