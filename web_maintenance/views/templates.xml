@@ -5,12 +5,12 @@
                 <t t-set="title">Maintenance</t>
                 <div class="oe_structure"/>
                 <div class="oe_structure">
-                    <div class="container">
+                    <div class="container bg-dark">
                         <form class="maintenance_ticket_create_form" role="form" action="/maintenance/ticket/create/"
                               method="POST">
                             <div id="cid_12" class="text-center support-main-title form-input-wide"
                                  style="float:center;">
-                                <img alt="" class="form-image" style="border:0"
+                                <img alt="" class="form-image mt-3" style="border:0"
                                      src="/web_maintenance/static/src/img/mentainance2_logo.png"
                                      height="131px"
                                      width="119px" data-component="image"/>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="clearfix oe_login_buttons">
                                 <a t-attf-href="/web/login" class="btn btn-link pull-right">Back to Login</a>
-                                <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                                <button type="submit" style="width:25%" class="btn mb-5 btn-info">Submit</button>
                             </div>
                         </form>
 
