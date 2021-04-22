@@ -13,89 +13,34 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
-                            <h1>TEST QQQQQQ</h1>
                     <div class="page">
                         <div class="col-6 mx-auto text-center">
                             <h1>Maintenance Request Information</h1>
                             <h2 t-field="doc.name"/>
+                            <p><strong>Created By</strong></p>
+                            <p t-field="doc.requester_id.name"/>
+                            <p><strong>Equipment</strong></p>
+                            <p t-field="doc.equipment_id.name"/>
+                            <p><strong>Category</strong></p>
+                            <p t-field="doc.category_id.name"/>
+                            <p><strong>Request Date</strong></p>
+                            <p t-field="doc.request_date"/>
+                            <p><strong>Close Date</strong></p>
+                            <p t-field="doc.close_date"/>
+                            <p><strong>Maintenance Type</strong></p>
                         </div>
-                        <div class="row py-2 border-bottom border-top">
-                            <div class="col-3">
-                                <p>Created By</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.requester_id.name"/>
-                            </div>
-                            <div class="col-2"></div>
-                            <div class="col-3">
-                                <p>Equipment</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.equipment_id.name"/>
-                            </div>
-                            <div class="col-3">
-                                <p>Category</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.category_id.name"/>
-                            </div>
-                            <div class="col-3">
-                                <p>Request Date</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.request_date"/>
-                            </div>
-                            <div class="col-3">
-                                <p>Close Date</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.close_date"/>
-                            </div>
-                            <div class="col-3">
-                                <p>Maintenance Type </p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.maintenance_type"/>
-                            </div>
-                        </div>
-                        <div class="row py-2 border-bottom">
-                            <div class="col-3">
-                                <p>Team</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.maintenance_team_id.name"/>
-                            </div>
-                            <div class="col-2"></div>
-                            <div class="col-3">
-                                <p>Responsible</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.user_id.name"/>
-                            </div>
-                            <div class="col-3">
-                                <p>Schedule Date</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.schedule_date"/>
-                            </div>
-                            <div class="col-3">
-                                <p>Duration</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.duration"/>
-                            </div>
-                            <div class="col-3">
-                                <p>Priority</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.priority"/>
-                            </div>
-                            <div class="col-3">
-                                <p>Company</p>
-                            </div>
-                            <div class="col-2">
-                                <p t-field="doc.company_id.name"/>
-                            </div>
+                        <div class="col-6 mx-auto text-center">
+                            <p><strong>Team</strong></p>
+                            <p t-field="doc.maintenance_team_id.name"/>
+                            <p><strong>Responsible</strong></p>
+                            <p t-field="doc.user_id.name"/>
+                            <p><strong>Schedule Date</strong></p>
+                            <p><strong>Duration</strong></p>
+                            <p t-field="doc.duration"/>
+                            <p><strong>Priority</strong></p>
+                            <p t-field="doc.priority"/>
+                            <p><strong>Company</strong></p>
+                            <p t-field="doc.company_id.name"/>
                         </div>
                     </div>
                 </t>
