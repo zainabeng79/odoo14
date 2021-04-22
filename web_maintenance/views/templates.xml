@@ -22,9 +22,7 @@
                                     </h1>
                                 </div>
                             </div>
-
                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-
                             <div class="form-group field-user-name">
                                 <label for="user_name" class="control-label">Your Name</label>
                                 <input type="text" name="user_name" t-att-value="user_name" id="user_name"
@@ -53,7 +51,6 @@
                                         <option t-esc="equipment_id.name" t-att-value="int(equipment_id.id)"/>
                                     </t>
                                 </select>
-
                             </div>
                             <div class="form-group field-maintenance_team_id">
                                 <label for="maintenance_team_id" class="control-label">Team</label>
@@ -63,16 +60,13 @@
                                                 t-att-value="int(maintenance_team_id.id)"/>
                                     </t>
                                 </select>
-
                             </div>
                             <div class="form-group field-maintenance_type">
                                 <label for="maintenance_type" class="control-label">Maintenance Type</label>
                                 <select name="maintenance_type" class="form-control link-style" required="required">
                                     <option value="corrective">Corrective</option>
                                     <option value="preventive">Preventive</option>
-
                                 </select>
-
                             </div>
                             <div class="form-group field-schedule_date">
                                 <label for="schedule_date" class="control-label">Scheduled Date</label>
@@ -99,7 +93,6 @@
                 <div class="oe_structure"/>
             </t>
         </template>
-
         <template id="listing" inherit_id="website.user_navbar">
             <xpath expr="//div[@id='top_menu_collapse']" position="after">
                 <a role="menuitem" href="/web_maintenance/ticket_create_form/" class="nav-link active">
@@ -107,7 +100,6 @@
                 </a>
             </xpath>
         </template>
-
         <template id="ticket_create_done">
             <t t-call="website.layout">
                 <div class="container">
@@ -123,9 +115,6 @@
                     </div>
                 </div>
             </t>
-
         </template>
-
-
     </data>
 </odoo>
