@@ -1,0 +1,237 @@
+<odoo>
+
+    <record id="report_equipment" model="ir.actions.report">
+        <field name="name">Equipment</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">equipment_print_pdf_image.report_equipment_view</field>
+        <field name="report_file">equipment_print_pdf_image.report_equipment</field>
+        <field name="binding_model_id" ref="model_maintenance_equipment"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_equipment_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="container">
+                            <div class="col-6 mx-auto text-center" >
+                                <h1>Equipment Information</h1>
+                                <h2 t-field="doc.name"/>
+                                <img t-att-src="'data:image/png;base64,%s' % to_text(doc.image1)" class="img-fluid"/>
+                            </div>
+
+                            <div class="row py-2 border-bottom border-top" >
+                                <div class="col-3">
+                                    <p>Equipment Category</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.category_id"/>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-3">
+                                    <p>Maintenance Team</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.maintenance_team_id"/>
+                                </div>
+                            </div>
+                            <div class="row py-2 border-bottom" >
+                                <div class="col-3">
+                                    <p>Company</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.company_id"/>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-3">
+                                    <p>Technician</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.technician_user_id"/>
+                                </div>
+                            </div>
+                            <div class="row py-2 border-bottom" >
+                                <div class="col-3">
+                                    <p>Used By</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.equipment_assign_to"/>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-3">
+                                    <p>Assigned Date</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.assign_date"/>
+                                </div>
+                            </div>
+                           <div class="row py-2 border-bottom" >
+                                <div class="col-3">
+                                    <p>Employee</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.employee_id"/>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-3">
+                                    <p>Department</p>
+                                </div>
+                                <div class="col-2">
+                                   <p t-field="doc.employee_id.department_id"/>
+                                </div>
+                           </div>
+                            <div class="row py-2" >
+                                <div class="col-3">
+                                    <p>Scrap Date</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.scrap_date"/>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-3">
+                                    <p>Used in location</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.location"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-4">
+                            <h2>Description</h2>
+                            <p t-field="doc.note"/>
+                        </div>
+                        <div class="mb-5">
+                            <h2>Product Information</h2>
+                            <div class="row py-2 border-top border-bottom" >
+                                <div class="col-3">
+                                    <p>Vendor</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.partner_id"/>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-3">
+                                    <p>Effective Date</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.effective_date"/>
+                                </div>
+                            </div>
+                             <div class="row py-2  border-bottom" >
+                                <div class="col-3">
+                                    <p>Vendor Reference</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.partner_ref"/>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-3">
+                                    <p>Cost</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.cost"/>
+                                </div>
+                            </div>
+                                 <div class="row py-2  border-bottom" >
+                                <div class="col-3">
+                                    <p>Model</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.model"/>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-3">
+                                    <p>Warranty Expiration Date</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.warranty_date"/>
+                                </div>
+                            </div>
+                            <div class="row py-2" >
+                                <div class="col-3">
+                                    <p>Serial Number</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.serial_no"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="mt-5 mb-3">
+                            <h2>Maintenance</h2>
+                             <div class="row py-2 border-top border-bottom" >
+                                <div class="col-3">
+                                    <p>Next Preventive Maintenance</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.next_action_date"/>
+                                </div>
+                                 <div class="col-1"></div>
+                                 <div class="col-4">
+                                    <p>Preventive Maintenance Frequency</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.period"/>
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-3">
+                                    <p>Maintenance Duration</p>
+                                </div>
+                                <div class="col-2">
+                                    <p t-field="doc.maintenance_duration"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2>Images</h2>
+                            <div class="row py-2 border-top border-bottom">
+                                <div class="col-2">
+                                    <p>Image2</p>
+                                </div>
+                                <div class="col-3">
+                                    <img t-att-src="'data:image/png;base64,%s' % to_text(doc.image2)" class="img-fluid"/>
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-2">
+                                    <p>Image3</p>
+                                </div>
+                                <div class="col-3">
+                                    <img t-att-src="'data:image/png;base64,%s' % to_text(doc.image3)" class="img-fluid"/>
+                                </div>
+                            </div>
+                            <div class="row py-2  border-bottom">
+                                <div class="col-2">
+                                    <p>Image4</p>
+                                </div>
+                                <div class="col-3">
+                                    <img t-att-src="'data:image/png;base64,%s' % to_text(doc.image4)" class="img-fluid"/>
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-2">
+                                    <p>Image5</p>
+                                </div>
+                                <div class="col-3">
+                                    <img t-att-src="'data:image/png;base64,%s' % to_text(doc.image5)" class="img-fluid"/>
+                                </div>
+                            </div>
+                             <div class="row py-2 ">
+                                <div class="col-2">
+                                    <p>Image6</p>
+                                </div>
+                                <div class="col-3">
+                                    <img t-att-src="'data:image/png;base64,%s' % to_text(doc.image6)" class="img-fluid"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

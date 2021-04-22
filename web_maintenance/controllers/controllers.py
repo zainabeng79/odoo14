@@ -42,7 +42,47 @@ class MaintenanceRequest(http.Controller):
                 sitemap=True)
     def list(self, **kw):
         return http.request.render('web_maintenance.listing', {})
-
+#     show mrp req
+    @http.route('/mrpreq', website=True, auth='public')
+    def hospital_patient(self, **kw):
+        print('test mrp req successful')
+        # return "Thanks for watching"
+        mrpreq = http.request.env['maintenance.request'].sudo().search([])
+        print(mrpreq)
+        vals = {'mrpreq': mrpreq}
+        return http.request.render("web_maintenance.display_mrpreq", vals)
+#  end show
+# start delete
+    @http.route('/delete', type='http', auth="public", website=True)
+    def delete_req(self, **kw):
+        id = kw.get('id')
+        print(id)
+        # print(applicant_id)
+        req = http.request.env['maintenance.request'].sudo().search([('id', '=', id)]).unlink()
+        print('testtt del',req)
+        return http.request.redirect("/mrpreq")
+# end delete
+# start show
+    @http.route(['/show'], type='http', auth="public", website=True)
+    def show_req(self, **kw):
+        id = kw.get('id')
+        print(id)
+        mrpreq = http.request.env['maintenance.request'].sudo().search([('id', '=', id)])
+        vals = {'mrpreq':mrpreq}
+        print('testtt del', mrpreq)
+        return http.request.render('web_maintenance.show_mrpreq',vals)
+# end show
+# start edit
+#     @http.route(['/edit'], type='http', auth="public", website=True)
+#     def edit_req(self, **kw):
+#         id = kw.get('id')
+#         vals={}
+#         print(id)
+#         mrpreq = http.request.env['maintenance.request'].sudo().search([('id', '=', kw.get('id'))])
+#         vals = {'mrpreq': mrpreq}
+#         print('testtt del', mrpreq)
+#         return http.request.render('web_maintenance.edit', vals)
+# end edit
 
 class MachineInfo(http.Controller):
     @http.route('/machine/info/', type='json', methods=['POST'], auth="user")

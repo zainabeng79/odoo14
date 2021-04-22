@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_mrpreq_id_card" model="ir.actions.report">
+        <field name="name">MRP Request Card</field>
+        <field name="model">maintenance.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mrp_customuzation.report_mrpreq_card</field>
+        <field name="report_file">mrp_customuzation.report_mrpreq_card</field>
+        <field name="print_report_name">'MRP Request Card - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_maintenance_request"/>
+    </record>
+    <template id="report_mrpreq_card">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="col-6 mx-auto text-center">
+                            <h1>Maintenance Request Information</h1>
+                            <h2 t-field="doc.name"/>
+                            <p><strong>Created By</strong></p>
+                            <p t-field="doc.requester_id.name"/>
+                            <p><strong>Equipment</strong></p>
+                            <p t-field="doc.equipment_id.name"/>
+                            <p><strong>Category</strong></p>
+                            <p t-field="doc.category_id.name"/>
+                            <p><strong>Request Date</strong></p>
+                            <p t-field="doc.request_date"/>
+                            <p><strong>Close Date</strong></p>
+                            <p t-field="doc.close_date"/>
+                            <p><strong>Maintenance Type</strong></p>
+                        </div>
+                        <div class="col-6 mx-auto text-center">
+                            <p><strong>Team</strong></p>
+                            <p t-field="doc.maintenance_team_id.name"/>
+                            <p><strong>Responsible</strong></p>
+                            <p t-field="doc.user_id.name"/>
+                            <p><strong>Schedule Date</strong></p>
+                            <p><strong>Duration</strong></p>
+                            <p t-field="doc.duration"/>
+                            <p><strong>Priority</strong></p>
+                            <p t-field="doc.priority"/>
+                            <p><strong>Company</strong></p>
+                            <p t-field="doc.company_id.name"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

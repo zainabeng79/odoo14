@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_mrp_home" name="Home mrp Custom">
+        <t t-call="website.layout">
+            <div class="container">
+                <t t-set="mrpreqs" t-value="request.env['maintenance.request'].sudo().search([],limit=4,order='id desc')"/>
+                <div class="row">
+                    <t t-foreach="mrpreqs" t-as="mrpreq">
+                        <div class="col-sm-6 mt-5">
+                            <div class="card mb-5 bg-secondary" style="max-width: 18rem;">
+                                <div class="card-header">Maintenance Request</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <t t-esc="mrpreq.name"></t>
+                                    </h5>
+                                    <p class="card-text">
+                                            <strong>
+                                                <span>
+                                                    Request Date:
+                                                </span>
+                                                    <t t-esc="mrpreq.request_date"></t>
+                                            </strong>
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>
+                                                <span>
+                                                    Request Responsible:
+                                                </span>
+                                                    <t t-esc="mrpreq.user_id.name"></t>
+                                            </strong>
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>
+                                                <span>
+                                                    Request Category:
+                                                </span>
+                                                    <t t-esc="mrpreq.category_id.name"></t>
+                                            </strong>
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>
+                                                <span>
+                                                    Request Stage:
+                                                </span>
+                                                    <t t-esc="mrpreq.stage_id.name"></t>
+                                            </strong>
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                        er-->
+
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+
+
+        <!--            <div class="container">-->
+        <!--                <h1 style="text-align:center;margin:25px;color:green;">Hi &#128516;</h1>-->
+        <!--                <h2 style="text-align:center;margin:25px;color:green;">My name is zainab  &#128400;</h2>-->
+        <!--               <h3 style="text-align:center;margin:25px;color:green;">Welcom to in my custom page &#129499;</h3>-->
+        <!--                <hr/>-->
+        <!--            </div>-->

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="mrp_website_menu" model="website.menu">
+            <field name="name">Show Maintenance Request</field>
+            <field name="url">/mrpreq</field>
+            <field name="sequence" type="int">
+                0
+            </field>
+        </record>
+</odoo>

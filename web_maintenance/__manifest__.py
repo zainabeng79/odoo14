@@ -22,6 +22,11 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/templates.xml',
+        'views/web_show_menu.xml',
+        'views/mrpreq_read.xml',
+        'views/mrpreq_show.xml',
+        'views/override_mrphomepage.xml',
+        # 'views/mrp_edit.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
