@@ -14,33 +14,62 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <div class="col-6 mx-auto text-center">
-                            <h1>Maintenance Request Information</h1>
-                            <h2 t-field="doc.name"/>
-                            <p><strong>Created By</strong></p>
-                            <p t-field="doc.requester_id.name"/>
-                            <p><strong>Equipment</strong></p>
-                            <p t-field="doc.equipment_id.name"/>
-                            <p><strong>Category</strong></p>
-                            <p t-field="doc.category_id.name"/>
-                            <p><strong>Request Date</strong></p>
-                            <p t-field="doc.request_date"/>
-                            <p><strong>Close Date</strong></p>
-                            <p t-field="doc.close_date"/>
-                            <p><strong>Maintenance Type</strong></p>
-                        </div>
-                        <div class="col-6 mx-auto text-center">
-                            <p><strong>Team</strong></p>
-                            <p t-field="doc.maintenance_team_id.name"/>
-                            <p><strong>Responsible</strong></p>
-                            <p t-field="doc.user_id.name"/>
-                            <p><strong>Schedule Date</strong></p>
-                            <p><strong>Duration</strong></p>
-                            <p t-field="doc.duration"/>
-                            <p><strong>Priority</strong></p>
-                            <p t-field="doc.priority"/>
-                            <p><strong>Company</strong></p>
-                            <p t-field="doc.company_id.name"/>
+                        <div class="row">
+                            <div class="col-6 mx-auto ">
+                                <h1>
+                                    <strong t-field="doc.name"/>
+                                </h1>
+                                <p>
+                                    <strong>Created By:</strong>
+                                    <span t-field="doc.requester_id.name"/>
+                                </p>
+                                <p>
+                                    <strong>Equipment</strong>
+                                    <span t-field="doc.equipment_id.name"/>
+                                </p>
+                                <p>
+                                    <strong>Category:</strong>
+                                    <span t-field="doc.category_id.name"/>
+                                </p>
+                                <p>
+                                    <strong>Request Date:</strong>
+                                    <span t-field="doc.request_date"/>
+                                </p>
+                                <p>
+                                    <strong>Close Date:</strong>
+                                    <span t-field="doc.close_date"/>
+                                </p>
+                                <p>
+                                    <strong>Maintenance Type</strong>
+                                    <span t-field="doc.maintenance_type"></span>
+                                </p>
+                            </div>
+                            <div class="col-6 mx-auto">
+                                <p>
+                                    <strong>Team:</strong>
+                                    <span t-field="doc.maintenance_team_id.name"/>
+                                </p>
+                                <p>
+                                    <strong>Responsible:</strong>
+                                    <span t-field="doc.user_id.name"/>
+                                </p>
+                                <p>
+                                    <strong>Schedule Date:</strong>
+                                    <span t-field="doc.schedule_date"></span>
+                                </p>
+                                <span>
+                                    <strong>Duration:</strong>
+                                    <p t-field="doc.duration"/>
+                                </span>
+                                <p>
+                                    <strong>Priority:</strong>
+                                    <span t-field="doc.priority"/>
+                                </p>
+                                <p>
+                                    <strong>Company:</strong>
+                                    <span t-field="doc.company_id.name"/>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </t>
