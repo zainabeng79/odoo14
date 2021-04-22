@@ -6,12 +6,12 @@ import werkzeug
 headers = {'Content-Type': 'application/json'}
 
 # target server authenticate url
-url_connect = "http://localhost:8069/web/session/authenticate"
+url_connect = "http://75.119.131.24/web/session/authenticate"
 # data to connect with database
 data_connect = {
     "params": {
-        "db": "odoo142",
-        "login": "zeinabeng900@gmail.com",
+        "db": "ps_group",
+        "login": "admin",
         "password": "admin",
     }
 }
@@ -25,8 +25,8 @@ if connect_session.ok:
 # ----------------------------
 
 # url to create data coming form skada
-url = "http://localhost:8069/scada_tables/"
-# please send data like this formathttp://localhost:8069/web/session/authenticate
+url = "http://75.119.131.24/scada_tables/"
+# please send data like this formathttp://75.119.131.24/web/session/authenticate
 data = [
     ({'start_time':'20.30'}),
 
