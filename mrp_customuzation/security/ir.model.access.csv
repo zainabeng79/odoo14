@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_notebook_class,notebook_class,model_notebook_class,base.group_user,1,1,1,1
+access_extend_maintenance_extend_maintenance,extend_maintenance.extend_maintenance,model_maintenance_checklist,base.group_user,1,1,1,1
+access_maintenance_insurance,extend_maintenance_insurance_maintenance,model_maintenance_insurance,base.group_user,1,1,1,1

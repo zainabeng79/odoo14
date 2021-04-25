@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- set action for button display purchase order  -->
+    <record id="sales_order_2" model="ir.actions.act_window">
+        <field name="name">Purchase Order</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+<!--  override view to add fields-->
+    <record id="maintenance_form_2" model="ir.ui.view">
+        <field name="name">View.maintenance.req2</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+                 <xpath expr="//group[1]" position="before">
+
+                <div name="button_box" class=" float-right border">
+                    <!--  in button type action we must define an action-->
+                    <button type="action" class="oe_stat_button border-right" icon="fa-exchange"
+                            name="%(sales_order_2)d" string="Internal Transfer">
+                    </button>
+                    <!--  in button type action we must define an action-->
+                    <button type="action" class="oe_stat_button" icon="fa-shopping-cart"
+                            name="%(sales_order_2)d" string="Purchase">
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>
